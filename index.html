@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hlomelang Lipholo for Congress</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #4267b2;
+        --secondary-color: #a9c5de;
+        --accent-color: #e5ae2d;
+        --dark-color: #283747;
+        --light-color: #f5f7fa;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+      }
+
+      .navbar {
+        background-color: var(--primary-color);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+          url("/api/placeholder/1200/600") no-repeat center center;
+        background-size: cover;
+        min-height: 500px;
+        color: white;
+        text-align: center;
+        padding-top: 150px;
+        position: relative;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.8rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        max-width: 800px;
+        margin: 0 auto 2rem auto;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .btn-primary:hover {
+        background-color: #345ba3;
+        border-color: #345ba3;
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+        color: white;
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .btn-secondary:hover {
+        background-color: #d0992a;
+        border-color: #d0992a;
+        transform: translateY(-2px);
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--accent-color);
+      }
+
+      .feature-box {
+        text-align: center;
+        padding: 2rem;
+        border-radius: 5px;
+        transition: all 0.3s;
+      }
+
+      .feature-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .testimonial {
+        background-color: var(--light-color);
+        padding: 5rem 0;
+      }
+
+      .testimonial-card {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 5px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+      }
+
+      .testimonial-card img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 1rem;
+      }
+
+      .cta-section {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 5rem 0;
+        text-align: center;
+      }
+
+      .cta-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 3rem 0 1rem;
+      }
+
+      .footer h5 {
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer a:hover {
+        color: white;
+        text-decoration: underline;
+      }
+
+      .social-icons a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        margin-right: 10px;
+        transition: all 0.3s;
+      }
+
+      .social-icons a:hover {
+        background-color: var(--accent-color);
+        transform: translateY(-3px);
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 50px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 15px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: var(--primary-color);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 2rem;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -43px;
+        top: 5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+      }
+
+      .timeline-date {
+        font-size: 0.9rem;
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      .timeline-content {
+        background-color: var(--light-color);
+        padding: 1.5rem;
+        border-radius: 5px;
+      }
+
+      .policy-card {
+        background-color: white;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+        transition: all 0.3s;
+      }
+
+      .policy-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .policy-icon {
+        background-color: var(--primary-color);
+        color: white;
+        font-size: 2rem;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .policy-content {
+        padding: 1.5rem;
+      }
+
+      .event-card {
+        display: flex;
+        background-color: white;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1.5rem;
+      }
+
+      .event-date {
+        background-color: var(--accent-color);
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        min-width: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .event-date .day {
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+
+      .event-content {
+        padding: 1rem;
+      }
+
+      .progress-bar {
+        background-color: var(--accent-color);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}" >LIPHOLO FOR CONGRESS</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html" >Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="policies.html">Policies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="events.html">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="get-involved.html">Get Involved</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-secondary ms-lg-3" href="donate.html">Donate</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <div class="container">
+        <h1>Hlomelang Lipholo</h1>
+        <p>
+          Building a brighter future for our community, one policy at a time.
+        </p>
+        <div class="d-grid gap-2 d-md-block">
+            <a href="{% url 'about' %}" class="btn btn-primary btn-lg">Learn More About Us</a>
+            <a href="{% url 'polls:index' %}" class="btn btn-secondary btn-lg">Participate in Polls</a>
+        </div>
+    </div>
+      </div>
+    </div>
+
+    <!-- Mission Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h2 class="mb-4">Our Mission</h2>
+            <p class="lead mb-4">
+              As your representative, I'll work tirelessly to build a community
+              where everyone has the opportunity to thrive and succeed.
+            </p>
+            <p>
+              I believe in pragmatic solutions that bring people together, not
+              divide them. My experience in both the public and private sectors
+              has taught me that the best ideas come from listening to diverse
+              perspectives and finding common ground.
+            </p>
+            <p>
+              Our campaign is focused on creating sustainable economic growth,
+              ensuring equal access to quality education and healthcare,
+              protecting our environment, and making our neighborhoods safer for
+              all residents.
+            </p>
+            <a href="policies.html" class="btn btn-primary mt-3"
+              >Read My Full Platform</a
+            >
+          </div>
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <img
+              src="https://npr.brightspotcdn.com/dims3/default/strip/false/crop/5025x3349+0+0/resize/1200/quality/75/format/webp/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Ffd%2Fb7%2F3ac54bad4c2a8487bd6bb3f5fd5e%2Fgettyimages-912411374.jpg"
+              alt="Hlomelang Lipholo speaking with constituents"
+              class="img-fluid rounded shadow"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Issues Section -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="section-title">Key Issues</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="policy-card">
+              <div class="policy-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div class="policy-content">
+                <h4>Education Reform</h4>
+                <p>
+                  Ensuring every child has access to quality education
+                  regardless of their zip code. Investing in teachers,
+                  technology, and facilities.
+                </p>
+                <a
+                  href="policies.html#education"
+                  class="btn btn-sm btn-outline-primary"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="policy-card">
+              <div class="policy-icon">
+                <i class="fas fa-heartbeat"></i>
+              </div>
+              <div class="policy-content">
+                <h4>Healthcare Access</h4>
+                <p>
+                  Fighting for affordable healthcare for all citizens and
+                  protection for those with pre-existing conditions.
+                </p>
+                <a
+                  href="policies.html#healthcare"
+                  class="btn btn-sm btn-outline-primary"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="policy-card">
+              <div class="policy-icon">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <div class="policy-content">
+                <h4>Environmental Protection</h4>
+                <p>
+                  Promoting clean energy initiatives and sustainable practices
+                  to preserve our natural resources for future generations.
+                </p>
+                <a
+                  href="policies.html#environment"
+                  class="btn btn-sm btn-outline-primary"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-4">
+            <div class="policy-card">
+              <div class="policy-icon">
+                <i class="fas fa-briefcase"></i>
+              </div>
+              <div class="policy-content">
+                <h4>Economic Growth</h4>
+                <p>
+                  Creating jobs through innovation, supporting small businesses,
+                  and investing in infrastructure.
+                </p>
+                <a
+                  href="policies.html#economy"
+                  class="btn btn-sm btn-outline-primary"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="policy-card">
+              <div class="policy-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <div class="policy-content">
+                <h4>Public Safety</h4>
+                <p>
+                  Modernizing our approach to community safety with
+                  evidence-based policies and community involvement.
+                </p>
+                <a
+                  href="policies.html#safety"
+                  class="btn btn-sm btn-outline-primary"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="policy-card">
+              <div class="policy-icon">
+                <i class="fas fa-home"></i>
+              </div>
+              <div class="policy-content">
+                <h4>Affordable Housing</h4>
+                <p>
+                  Addressing the housing crisis through innovative policies that
+                  create more affordable options for everyone.
+                </p>
+                <a
+                  href="policies.html#housing"
+                  class="btn btn-sm btn-outline-primary"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="event-card">
+              <div class="event-date">
+                <span class="month">APR</span>
+                <span class="day">15</span>
+              </div>
+              <div class="event-content">
+                <h5>Town Hall Meeting</h5>
+                <p class="mb-1">
+                  <i class="fas fa-map-marker-alt me-2"></i> Community Center,
+                  123 Main Street
+                </p>
+                <p class="mb-1">
+                  <i class="fas fa-clock me-2"></i> 6:00 PM - 8:00 PM
+                </p>
+                <a
+                  href="events.html#town-hall"
+                  class="btn btn-sm btn-outline-primary mt-2"
+                  >RSVP</a
+                >
+              </div>
+            </div>
+            <div class="event-card">
+              <div class="event-date">
+                <span class="month">APR</span>
+                <span class="day">22</span>
+              </div>
+              <div class="event-content">
+                <h5>Volunteer Training</h5>
+                <p class="mb-1">
+                  <i class="fas fa-map-marker-alt me-2"></i> Campaign HQ, 456
+                  Oak Avenue
+                </p>
+                <p class="mb-1">
+                  <i class="fas fa-clock me-2"></i> 10:00 AM - 12:00 PM
+                </p>
+                <a
+                  href="events.html#volunteer-training"
+                  class="btn btn-sm btn-outline-primary mt-2"
+                  >Register</a
+                >
+              </div>
+            </div>
+            <div class="event-card">
+              <div class="event-date">
+                <span class="month">APR</span>
+                <span class="day">29</span>
+              </div>
+              <div class="event-content">
+                <h5>Fundraising Dinner</h5>
+                <p class="mb-1">
+                  <i class="fas fa-map-marker-alt me-2"></i> Grand Hotel, 789
+                  Pine Street
+                </p>
+                <p class="mb-1">
+                  <i class="fas fa-clock me-2"></i> 7:00 PM - 10:00 PM
+                </p>
+                <a
+                  href="events.html#fundraising-dinner"
+                  class="btn btn-sm btn-outline-primary mt-2"
+                  >Get Tickets</a
+                >
+              </div>
+            </div>
+            <div class="text-center mt-4">
+              <a href="events.html" class="btn btn-primary">View All Events</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progress Section -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="section-title">Campaign Progress</h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title">Fundraising Goal: R500,000</h5>
+                <div class="progress mb-3" style="height: 25px">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: 65%"
+                    aria-valuenow="65"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    65%
+                  </div>
+                </div>
+                <p class="text-center">R325,000 raised so far</p>
+                <div class="text-center">
+                  <a href="donate.html" class="btn btn-primary"
+                    >Make a Donation</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Volunteer Goal: 1,000 Volunteers</h5>
+                <div class="progress mb-3" style="height: 25px">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: 78%"
+                    aria-valuenow="78"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    78%
+                  </div>
+                </div>
+                <p class="text-center">780 volunteers and counting</p>
+                <div class="text-center">
+                  <a href="get-involved.html#volunteer" class="btn btn-primary"
+                    >Become a Volunteer</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonial py-5">
+      <div class="container">
+        <h2 class="section-title">What People Are Saying</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <img
+                src="https://i1.rgstatic.net/ii/profile.image/272776086945807-1442046296538_Q512/Sarah-Johnson-64.jpg"
+                alt="Sarah Johnson"
+                class="mx-auto d-block"
+              />
+              <h5 class="text-center">Sarah Johnson</h5>
+              <p class="text-center text-muted">Small Business Owner</p>
+              <p>
+                "Hlomelang understands the challenges small businesses face. Her
+                economic policies would help entrepreneurs like me thrive in our
+                community."
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <img
+                src="https://www.sigrunpartners.com/wp-content/uploads/2021/10/David_Martinez_430A2304_web-781x1024.jpg"
+                alt="David Martinez"
+                class="mx-auto d-block"
+              />
+              <h5 class="text-center">David Martinez</h5>
+              <p class="text-center text-muted">Teacher</p>
+              <p>
+                "As an educator, I appreciate Hlomelang's commitment to
+                improving our school system. He has concrete plans, not just
+                empty promises."
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <img
+                src="data:image/jpeg;base64,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"
+                alt="Jennifer Williams"
+                class="mx-auto d-block"
+              />
+              <h5 class="text-center">Jennifer Williams</h5>
+              <p class="text-center text-muted">Community Advocate</p>
+              <p>
+                "Hlomelang listens to community concerns and takes action. Her
+                approach to public service is refreshing and exactly what we
+                need right now."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Join Our Campaign Today</h2>
+        <p class="lead mb-4">
+          Together, we can build a better future for our community.
+        </p>
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <form class="bg-white p-4 rounded shadow">
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Full Name"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Email Address"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="tel"
+                  class="form-control"
+                  placeholder="Phone Number"
+                />
+              </div>
+              <div class="mb-3">
+                <select class="form-select">
+                  <option selected>How would you like to help?</option>
+                  <option>Volunteer</option>
+                  <option>Donate</option>
+                  <option>Host an Event</option>
+                  <option>Spread the Word</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">
+                Sign Up
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h5>Hlomelang Lipholo for Congress</h5>
+            <p>Paid for by Lipholo for Congress Committee</p>
+            <p>123 Campaign Trail, Hometown, ST 12345</p>
+            <div class="social-icons mt-3">
+              <a href="https://facebook.com"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+              <a href="https://instagram.com"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          <div class="col-md-2 mb-4 mb-md-0">
+            <h5>Navigation</h5>
+            <ul class="list-unstyled">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="policies.html">Policies</a></li>
+              <li><a href="events.html">Events</a></li>
+              <li><a href="news.html">News</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2 mb-4 mb-md-0">
+            <h5>Get Involved</h5>
+            <ul class="list-unstyled">
+              <li><a href="get-involved.html#volunteer">Volunteer</a></li>
+              <li><a href="donate.html">Donate</a></li>
+              <li><a href="get-involved.html#endorse">Endorse</a></li>
+              <li><a href="get-involved.html#host">Host an Event</a></li>
+              <li><a href="get-involved.html#spread">Spread the Word</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Stay Informed</h5>
+            <p>Sign up for our newsletter to receive campaign updates.</p>
+            <div class="input-group mb-3">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Email Address"
+              />
+              <button class="btn btn-secondary" type="button">Subscribe</button>
+            </div>
+          </div>
+        </div>
+        <hr class="mt-4 mb-3 border-light" />
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start">
+            <p class="small mb-0">
+              &copy; 2025 Hlomelang Lipholo for Congress. All rights reserved.
+            </p>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <p class="small mb-0">
+              <a href="privacy.html">Privacy Policy</a> |
+              <a href="terms.html">Terms of Service</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
